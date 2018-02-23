@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ms-server1
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+zuul:
+  prefix: /api
+  routes:
+    ms-client1:
+      path: /ms-client1/**
+      url: http://localhost:8301
+    db-service1:
+      path: /db-service1/**
+      url: http://localhost:8302
+
+
